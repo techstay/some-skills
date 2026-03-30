@@ -2,6 +2,22 @@
 
 一些可能有用的技能（Skills），用于扩展 AI 大模型的能力。
 
+<p>
+  <img src="https://hitscounter.dev/badge?page=techstay.some-skills&style=flat-square&show=unique&left_color=555&right_color=e74c3c&left_text=visitors" alt="visitors" />
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License: MIT" /></a>
+  <a href="https://github.com/techstay/some-skills"><img src="https://img.shields.io/badge/GitHub-repo-181717?style=flat-square&logo=github" alt="GitHub" /></a>
+  <img src="https://img.shields.io/badge/Made%20with-%E2%9D%A4-red?style=flat-square" alt="Made with love" />
+</p>
+
+<!--Quote starts-->
+<details>
+<summary><b>💡 每日灵感</b></summary>
+
+<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=light" alt="Random Quote" />
+
+</details>
+<!--Quote ends-->
+
 ## 📁 技能列表
 
 ### obsidian-tasks
