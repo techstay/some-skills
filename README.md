@@ -1,13 +1,13 @@
 # some-skills
 
-一些可能有用的技能（Skills），用于扩展 AI 大模型的能力。
-
 <p>
-  <img src="https://hitscounter.dev/badge?page=techstay.some-skills&style=flat-square&show=unique&left_color=555&right_color=e74c3c&left_text=visitors" alt="visitors" />
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=techstay.some-skills&left_color=555&right_color=e74c3c&left_text=visitors" alt="visitors" />
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License: MIT" /></a>
   <a href="https://github.com/techstay/some-skills"><img src="https://img.shields.io/badge/GitHub-repo-181717?style=flat-square&logo=github" alt="GitHub" /></a>
   <img src="https://img.shields.io/badge/Made%20with-%E2%9D%A4-red?style=flat-square" alt="Made with love" />
 </p>
+
+一些可能有用的技能（Skills），用于扩展 AI 大模型的能力。
 
 <!--Quote starts-->
 <details>
@@ -48,10 +48,10 @@ skills/obsidian-tasks/
 
 ## ⭐ Star History
 
-<a href="https://www.star-history.com/#techstay/some-skills&Date">
+<a href="https://www.star-history.com/?repos=techstay%2Fsome-skills&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=techstay/some-skills&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=techstay/some-skills&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=techstay/some-skills&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=techstay/some-skills&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=techstay/some-skills&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=techstay/some-skills&type=date&legend=top-left" />
  </picture>
 </a>
