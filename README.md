@@ -45,3 +45,13 @@ skills/obsidian-tasks/
     ├── query-advanced.md             # 低频：脚本函数、正则、预设、explain
     └── limitations.md                # 低频：限制与注意事项
 ```
+
+## ⭐ Star History
+
+<a href="https://www.star-history.com/#techstay/some-skills&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=techstay/some-skills&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=techstay/some-skills&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=techstay/some-skills&type=Date" />
+ </picture>
+</a>
