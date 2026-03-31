@@ -18,6 +18,41 @@
 </details>
 <!--Quote ends-->
 
+## 🚀 安装技能
+
+本仓库的技能可以通过 `npx skills` CLI 工具安装到各种 AI 编码代理中（支持 OpenCode、Claude Code、Cursor、Codex 等 40+ 代理）。
+
+### 快速安装
+
+```bash
+# 安装所有技能到项目
+npx skills add techstay/some-skills
+
+# 安装到全局
+npx skills add techstay/some-skills -g
+
+# 安装指定技能
+npx skills add techstay/some-skills --skill obsidian-tasks --skill web-search
+
+# 安装到指定代理
+npx skills add techstay/some-skills -a opencode -a claude-code
+
+# 查看可用技能（不安装）
+npx skills add techstay/some-skills --list
+```
+
+### 更多命令
+
+| 命令 | 说明 |
+|------|------|
+| `npx skills list` | 列出已安装的技能 |
+| `npx skills find [query]` | 搜索技能 |
+| `npx skills remove [skills]` | 移除已安装的技能 |
+| `npx skills check` | 检查技能更新 |
+| `npx skills update` | 更新所有已安装技能 |
+
+> 了解更多：[vercel-labs/skills](https://github.com/vercel-labs/skills)
+
 ## 📁 技能列表
 
 ### ✅ obsidian-tasks
