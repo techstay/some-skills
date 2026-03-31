@@ -46,6 +46,27 @@ skills/obsidian-tasks/
     └── limitations.md                # 低频：限制与注意事项
 ```
 
+### web-search
+
+网络搜索技能 —— 使用多种搜索后端（Tavily、Exa、Ollama）执行网络检索，返回带引用的 YAML 格式结果。
+
+**功能覆盖：**
+
+- 使用 Tavily / Exa / Ollama 进行网络搜索
+- 结果以 YAML 格式输出，节省 token
+- 支持新闻、金融等主题过滤（Tavily）
+- 可通过 `--max-results` 控制结果数量
+
+**文件结构：**
+
+```
+skills/web-search/
+├── SKILL.md                          # 主指令文件
+└── scripts/
+    ├── web_search.py                 # 多后端搜索 CLI
+    └── .env                          # API 密钥配置
+```
+
 ## ⭐ Star History
 
 <a href="https://www.star-history.com/?repos=techstay%2Fsome-skills&type=date&legend=top-left">
