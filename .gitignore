@@ -26,3 +26,6 @@ desktop.ini
 # Environment & Secrets
 .env
 .env.*
+
+# workbuddy
+.workbuddy/
