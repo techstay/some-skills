@@ -38,6 +38,22 @@ Rules:
 - Use imperative mood, lowercase (e.g. "add", "fix", "update")
 - **Write in English**
 
+## Work In Progress (⚠️ Important!)
+
+**The following skills are currently INCOMPLETE and should NOT be committed:**
+
+- `activitywatch` - ActivityWatch time tracking skill (incomplete)
+- `multi-agent-orchestration` - Multi-agent AI coordination skill (incomplete)  
+- `rss-news` - RSS news aggregation skill (incomplete)
+
+**DO NOT commit these skills until they are fully completed and reviewed.**
+
+When working on skills:
+1. Complete all skill content first
+2. Test and verify the skill works
+3. Commit skills individually (one skill per commit)
+4. Only push when the skill is truly ready
+
 ## Common Tasks
 
 ### Authoring new skills
