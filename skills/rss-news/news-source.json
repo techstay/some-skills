@@ -1,0 +1,654 @@
+{
+  "categories": [
+    {
+      "category": "China News",
+      "sources": [
+        {
+          "display_name": "澎湃新闻",
+          "name": "The Paper",
+          "url": "https://feedx.net/rss/thepaper.xml"
+        },
+        {
+          "display_name": "新华每日电讯",
+          "name": "Xinhua Daily Telegraph",
+          "url": "https://feedx.net/rss/mrdx.xml"
+        },
+        {
+          "display_name": "界面新闻",
+          "name": "Jiemian News",
+          "url": "https://plink.anyfeeder.com/jiemian/news"
+        },
+        {
+          "display_name": "南方周末",
+          "name": "Southern Weekly",
+          "url": "https://feedx.net/rss/infzm.xml"
+        },
+        {
+          "display_name": "虎嗅",
+          "name": "Huxiu",
+          "url": "https://rss.huxiu.com/"
+        },
+        {
+          "display_name": "36氪",
+          "name": "36Kr",
+          "url": "https://www.36kr.com/feed"
+        },
+        {
+          "display_name": "新华网要闻",
+          "name": "Xinhua News",
+          "url": "http://www.xinhuanet.com/politics/news_politics.xml"
+        },
+        {
+          "display_name": "中国政府网政策",
+          "name": "Gov.cn",
+          "url": "http://www.gov.cn/pushinfo/v150203/rss.xml"
+        }
+      ]
+    },
+    {
+      "category": "International News",
+      "sources": [
+        {
+          "display_name": "The New York Times",
+          "name": "The New York Times",
+          "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+        },
+        {
+          "display_name": "The Washington Post",
+          "name": "The Washington Post",
+          "url": "https://feeds.washingtonpost.com/rss/world"
+        },
+        {
+          "display_name": "The Guardian",
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/world/rss"
+        },
+        {
+          "display_name": "Al Jazeera",
+          "name": "Al Jazeera",
+          "url": "https://www.aljazeera.com/xml/rss/all.xml"
+        },
+        {
+          "display_name": "BBC News",
+          "name": "BBC News",
+          "url": "https://feeds.bbci.co.uk/news/world/rss.xml"
+        },
+        {
+          "display_name": "NHK World",
+          "name": "NHK World-Japan",
+          "url": "https://www.nhk.or.jp/rss/news/cat6.xml"
+        },
+        {
+          "display_name": "Reuters",
+          "name": "Reuters",
+          "url": "https://news.google.com/rss/search?q=site:reuters.com"
+        },
+        {
+          "display_name": "CNN",
+          "name": "CNN",
+          "url": "http://rss.cnn.com/rss/edition_world.rss"
+        },
+        {
+          "display_name": "NPR",
+          "name": "NPR",
+          "url": "https://feeds.npr.org/1001/rss.xml"
+        },
+        {
+          "display_name": "South China Morning Post",
+          "name": "South China Morning Post",
+          "url": "https://www.scmp.com/rss/91/feed/"
+        },
+        {
+          "display_name": "ABC News",
+          "name": "ABC News",
+          "url": "https://www.abc.net.au/news/feed/1948/rss.xml"
+        },
+        {
+          "display_name": "UN News",
+          "name": "UN News",
+          "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml"
+        },
+        {
+          "display_name": "Reddit (r/worldnews)",
+          "name": "Reddit r/worldnews",
+          "url": "https://www.reddit.com/r/worldnews/.rss"
+        }
+      ]
+    },
+    {
+      "category": "Technology",
+      "sources": [
+        {
+          "display_name": "Engadget",
+          "name": "Engadget",
+          "url": "https://www.engadget.com/rss.xml"
+        },
+        {
+          "display_name": "The Verge",
+          "name": "The Verge",
+          "url": "https://www.theverge.com/rss/index.xml"
+        },
+        {
+          "display_name": "TechCrunch",
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/feed/"
+        },
+        {
+          "display_name": "Ars Technica",
+          "name": "Ars Technica",
+          "url": "https://feeds.arstechnica.com/arstechnica/index"
+        },
+        {
+          "display_name": "奇客资讯",
+          "name": "Solidot",
+          "url": "https://www.solidot.org/index.rss"
+        },
+        {
+          "display_name": "少数派",
+          "name": "sspai",
+          "url": "https://sspai.com/feed"
+        },
+        {
+          "display_name": "IT之家",
+          "name": "IT Home",
+          "url": "https://www.ithome.com/rss/"
+        },
+        {
+          "display_name": "WIRED",
+          "name": "WIRED",
+          "url": "https://www.wired.com/feed/rss"
+        },
+        {
+          "display_name": "MIT Technology Review",
+          "name": "MIT Technology Review",
+          "url": "https://www.technologyreview.com/feed/"
+        },
+        {
+          "display_name": "CNET",
+          "name": "CNET",
+          "url": "https://www.cnet.com/rss/all/"
+        },
+        {
+          "display_name": "Hacker News",
+          "name": "Hacker News",
+          "url": "https://hnrss.org/frontpage"
+        },
+        {
+          "display_name": "爱范儿",
+          "name": "ifanr",
+          "url": "https://www.ifanr.com/feed"
+        },
+        {
+          "display_name": "雷锋网",
+          "name": "Leiphone",
+          "url": "https://www.leiphone.com/feed"
+        },
+        {
+          "display_name": "MIT Technology Review (AI)",
+          "name": "MIT Technology Review",
+          "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed/"
+        },
+        {
+          "display_name": "OpenAI News",
+          "name": "OpenAI",
+          "url": "https://openai.com/news/rss.xml"
+        },
+        {
+          "display_name": "Google AI Blog",
+          "name": "Google AI",
+          "url": "https://blog.google/technology/ai/rss/"
+        },
+        {
+          "display_name": "量子位",
+          "name": "QbitAI",
+          "url": "https://www.qbitai.com/feed"
+        },
+        {
+          "display_name": "Hacker News (Top Stories)",
+          "name": "Hacker News",
+          "url": "https://news.ycombinator.com/rss"
+        },
+        {
+          "display_name": "Techmeme",
+          "name": "Techmeme",
+          "url": "https://www.techmeme.com/feed.xml"
+        },
+        {
+          "display_name": "LessWrong",
+          "name": "LessWrong",
+          "url": "https://www.lesswrong.com/rss"
+        },
+        {
+          "display_name": "Slashdot",
+          "name": "Slashdot",
+          "url": "https://rss.slashdot.org/slashdot/slashdotMain"
+        },
+        {
+          "display_name": "Lobsters",
+          "name": "Lobsters",
+          "url": "https://lobste.rs/rss"
+        },
+        {
+          "display_name": "The Register",
+          "name": "The Register",
+          "url": "https://www.theregister.com/headlines.rss"
+        },
+        {
+          "display_name": "TorrentFreak",
+          "name": "TorrentFreak",
+          "url": "https://torrentfreak.com/feed"
+        },
+        {
+          "display_name": "BBC Technology",
+          "name": "BBC Technology",
+          "url": "https://feeds.bbci.co.uk/news/technology/rss.xml"
+        },
+        {
+          "display_name": "Krebs on Security",
+          "name": "Krebs on Security",
+          "url": "https://krebsonsecurity.com/feed/"
+        },
+        {
+          "display_name": "SecurityWeek",
+          "name": "SecurityWeek",
+          "url": "https://www.securityweek.com/feed/"
+        },
+        {
+          "display_name": "Threatpost",
+          "name": "Threatpost",
+          "url": "https://threatpost.com/feed/"
+        },
+        {
+          "display_name": "CleanTechnica",
+          "name": "CleanTechnica",
+          "url": "https://cleantechnica.com/feed/"
+        },
+        {
+          "display_name": "PV Magazine",
+          "name": "PV Magazine",
+          "url": "https://www.pv-magazine.com/feed/"
+        },
+        {
+          "display_name": "PV Tech",
+          "name": "PV Tech",
+          "url": "https://www.pv-tech.org/feed"
+        },
+        {
+          "display_name": "Electrek",
+          "name": "Electrek",
+          "url": "https://electrek.co/feed/"
+        }
+      ]
+    },
+    {
+      "category": "Business & Finance",
+      "sources": [
+        {
+          "display_name": "The Economist",
+          "name": "The Economist",
+          "url": "https://www.economist.com/finance-and-economics/rss.xml"
+        },
+        {
+          "display_name": "The Wall Street Journal",
+          "name": "The Wall Street Journal",
+          "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml"
+        },
+        {
+          "display_name": "Financial Times",
+          "name": "Financial Times",
+          "url": "https://www.ft.com/rss/home/uk"
+        },
+        {
+          "display_name": "Forbes",
+          "name": "Forbes",
+          "url": "https://www.forbes.com/business/feed/"
+        },
+        {
+          "display_name": "Business Insider",
+          "name": "Business Insider",
+          "url": "https://feeds.businessinsider.com/custom/all"
+        },
+        {
+          "display_name": "CNBC",
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/id/10001147/device/rss/rss.html"
+        },
+        {
+          "display_name": "Bloomberg Technology",
+          "name": "Bloomberg Technology",
+          "url": "https://feeds.bloomberg.com/technology/news.rss"
+        },
+        {
+          "display_name": "Fast Company",
+          "name": "Fast Company",
+          "url": "https://www.fastcompany.com/latest/rss?truncated=true"
+        },
+        {
+          "display_name": "BBC Business",
+          "name": "BBC Business",
+          "url": "https://feeds.bbci.co.uk/news/business/rss.xml"
+        },
+        {
+          "display_name": "财新网",
+          "name": "Caixin",
+          "url": "https://quanwenrss.com/caixin"
+        },
+        {
+          "display_name": "The Wall Street Journal (US Business)",
+          "name": "The Wall Street Journal",
+          "url": "https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml"
+        },
+        {
+          "display_name": "CNBC Headlines",
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html"
+        },
+        {
+          "display_name": "Bloomberg Wealth",
+          "name": "Bloomberg Wealth",
+          "url": "https://feeds.bloomberg.com/wealth/news.rss"
+        },
+        {
+          "display_name": "财新网（RSSHub）",
+          "name": "Caixin (RSSHub)",
+          "url": "https://rsshub.rssforever.com/caixin/latest"
+        }
+      ]
+    },
+    {
+      "category": "Politics",
+      "sources": [
+        {
+          "display_name": "Politico",
+          "name": "Politico",
+          "url": "https://rss.politico.com/politics-news.xml"
+        },
+        {
+          "display_name": "RealClearPolitics",
+          "name": "RealClearPolitics",
+          "url": "https://www.realclearpolitics.com/index.xml"
+        },
+        {
+          "display_name": "The Hill",
+          "name": "The Hill",
+          "url": "https://thehill.com/feed/?feed=partnerfeed-news-feed&format=rss"
+        },
+        {
+          "display_name": "NBC News",
+          "name": "NBC News",
+          "url": "https://feeds.nbcnews.com/nbcnews/public/politics"
+        },
+        {
+          "display_name": "BBC Politics",
+          "name": "BBC Politics",
+          "url": "https://feeds.bbci.co.uk/news/politics/rss.xml"
+        },
+        {
+          "display_name": "NPR Politics",
+          "name": "NPR Politics",
+          "url": "https://feeds.npr.org/1014/rss.xml"
+        },
+        {
+          "display_name": "The New York Times",
+          "name": "The New York Times",
+          "url": "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml"
+        },
+        {
+          "display_name": "ProPublica",
+          "name": "ProPublica",
+          "url": "https://www.propublica.org/feeds/propublica/main"
+        },
+        {
+          "display_name": "The Guardian Politics",
+          "name": "The Guardian Politics",
+          "url": "https://www.theguardian.com/politics/rss"
+        }
+      ]
+    },
+    {
+      "category": "Sports",
+      "sources": [
+        {
+          "display_name": "Yahoo Sports",
+          "name": "Yahoo Sports",
+          "url": "https://sports.yahoo.com/rss/"
+        },
+        {
+          "display_name": "Sky Sports",
+          "name": "Sky Sports",
+          "url": "https://feeds.skynews.com/feeds/rss/sports.xml"
+        },
+        {
+          "display_name": "Fox Sports",
+          "name": "Fox Sports",
+          "url": "https://api.foxsports.com/v1/rss?partnerKey=zBaFxRyGKCfxBagJG9b8pqLyndmvo7UU"
+        },
+        {
+          "display_name": "CBS Sports",
+          "name": "CBS Sports",
+          "url": "https://www.cbssports.com/rss/headlines"
+        },
+        {
+          "display_name": "The Guardian Sport",
+          "name": "The Guardian Sport",
+          "url": "https://www.theguardian.com/sport/rss"
+        },
+        {
+          "display_name": "BBC Sport",
+          "name": "BBC Sport",
+          "url": "https://feeds.bbci.co.uk/sport/rss.xml"
+        },
+        {
+          "display_name": "NBC Sports",
+          "name": "NBC Sports",
+          "url": "https://www.nbcsports.com/index.atom"
+        },
+        {
+          "display_name": "The Athletic",
+          "name": "The Athletic",
+          "url": "https://www.nytimes.com/athletic/rss/news/"
+        },
+        {
+          "display_name": "Sporting News",
+          "name": "Sporting News",
+          "url": "https://www.sportingnews.com/us/rss"
+        }
+      ]
+    },
+    {
+      "category": "Science",
+      "sources": [
+        {
+          "display_name": "Science",
+          "name": "Science",
+          "url": "https://www.science.org/rss/news_current.xml"
+        },
+        {
+          "display_name": "Nature",
+          "name": "Nature",
+          "url": "https://www.nature.com/nature.rss"
+        },
+        {
+          "display_name": "New Scientist",
+          "name": "New Scientist",
+          "url": "https://feeds.newscientist.com/science-news"
+        },
+        {
+          "display_name": "Phys.org",
+          "name": "Phys.org",
+          "url": "https://phys.org/rss-feed/"
+        },
+        {
+          "display_name": "Scientific American",
+          "name": "Scientific American",
+          "url": "https://www.scientificamerican.com/platform/syndication/rss/"
+        },
+        {
+          "display_name": "Space.com",
+          "name": "Space.com",
+          "url": "https://www.space.com/feeds/all"
+        },
+        {
+          "display_name": "NASA",
+          "name": "NASA",
+          "url": "https://www.nasa.gov/news-release/feed/"
+        },
+        {
+          "display_name": "ScienceDaily",
+          "name": "ScienceDaily",
+          "url": "https://www.sciencedaily.com/rss/all.xml"
+        },
+        {
+          "display_name": "BBC Science & Environment",
+          "name": "BBC Science & Environment",
+          "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml"
+        },
+        {
+          "display_name": "National Science Foundation",
+          "name": "National Science Foundation",
+          "url": "https://www.nsf.gov/rss/rss_www_news.xml"
+        },
+        {
+          "display_name": "arXiv (Computer Science)",
+          "name": "arXiv",
+          "url": "https://rss.arxiv.org/rss/cs"
+        },
+        {
+          "display_name": "Nature (Current Issue)",
+          "name": "Nature",
+          "url": "http://www.nature.com/nature/current_issue/rss/"
+        }
+      ]
+    },
+    {
+      "category": "Health & Medicine",
+      "sources": [
+        {
+          "display_name": "CDC",
+          "name": "CDC",
+          "url": "https://tools.cdc.gov/api/v2/resources/media/316422.rss"
+        },
+        {
+          "display_name": "MedicineNet",
+          "name": "MedicineNet",
+          "url": "https://www.medicinenet.com/rss/dailyhealth.xml"
+        },
+        {
+          "display_name": "MedlinePlus",
+          "name": "MedlinePlus",
+          "url": "https://medlineplus.gov/feeds/whatsnew.xml"
+        },
+        {
+          "display_name": "BBC Health",
+          "name": "BBC Health",
+          "url": "https://feeds.bbci.co.uk/news/health/rss.xml"
+        },
+        {
+          "display_name": "KFF Health News",
+          "name": "KFF Health News",
+          "url": "https://kffhealthnews.org/feed/"
+        },
+        {
+          "display_name": "MedPage Today",
+          "name": "MedPage Today",
+          "url": "https://www.medpagetoday.com/rss/headlines.xml"
+        }
+      ]
+    },
+    {
+      "category": "Entertainment",
+      "sources": [
+        {
+          "display_name": "The Hollywood Reporter",
+          "name": "The Hollywood Reporter",
+          "url": "https://www.hollywoodreporter.com/feed/"
+        },
+        {
+          "display_name": "Variety",
+          "name": "Variety",
+          "url": "https://variety.com/feed/"
+        },
+        {
+          "display_name": "Deadline",
+          "name": "Deadline",
+          "url": "https://deadline.com/feed/"
+        },
+        {
+          "display_name": "TMZ",
+          "name": "TMZ",
+          "url": "https://www.tmz.com/rss.xml"
+        },
+        {
+          "display_name": "Rolling Stone",
+          "name": "Rolling Stone",
+          "url": "https://www.rollingstone.com/feed/"
+        },
+        {
+          "display_name": "Roger Ebert",
+          "name": "Roger Ebert",
+          "url": "https://www.rogerebert.com/feed"
+        },
+        {
+          "display_name": "E! News",
+          "name": "E! News",
+          "url": "https://www.eonline.com/syndication/feeds/rssfeeds/topstories.xml"
+        },
+        {
+          "display_name": "Collider",
+          "name": "Collider",
+          "url": "https://collider.com/feed/"
+        },
+        {
+          "display_name": "BBC Entertainment & Arts",
+          "name": "BBC Entertainment & Arts",
+          "url": "https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml"
+        }
+      ]
+    },
+    {
+      "category": "Culture & Education",
+      "sources": [
+        {
+          "display_name": "Inside Higher Ed",
+          "name": "Inside Higher Ed",
+          "url": "https://www.insidehighered.com/rss.xml"
+        },
+        {
+          "display_name": "Smithsonian Magazine",
+          "name": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/rss/arts-culture/"
+        },
+        {
+          "display_name": "NPR Culture",
+          "name": "NPR Culture",
+          "url": "https://feeds.npr.org/1008/rss.xml"
+        },
+        {
+          "display_name": "The Atlantic",
+          "name": "The Atlantic",
+          "url": "https://www.theatlantic.com/feed/all/"
+        },
+        {
+          "display_name": "The Hechinger Report",
+          "name": "The Hechinger Report",
+          "url": "https://hechingerreport.org/feed/"
+        },
+        {
+          "display_name": "KQED MindShift",
+          "name": "KQED MindShift",
+          "url": "https://ww2.kqed.org/mindshift/feed/"
+        },
+        {
+          "display_name": "BBC Education",
+          "name": "BBC Education",
+          "url": "https://feeds.bbci.co.uk/news/education/rss.xml"
+        },
+        {
+          "display_name": "NPR Education",
+          "name": "NPR Education",
+          "url": "https://feeds.npr.org/1053/rss.xml"
+        }
+      ]
+    }
+  ]
+}
