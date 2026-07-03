@@ -2,20 +2,18 @@
 name: rss-news
 description: >
   RSS news aggregation skill. Fetches news by category from configured RSS
-  sources and outputs compact summaries. Suitable for getting news updates,
-  RSS feed subscriptions, blog or site updates, news source aggregation,
-  and browsing news by category. The script ships with local caching
-  (default 4 hours, adjustable) and by default only shows news from the
-  last 24 hours, with filtering by category and time window. Default output
-  is token-efficient (summary only, blank-line separated) for large-scale AI
-  consumption; pass --yaml for the full structured payload.
+  sources and outputs each article as a title + summary block. Suitable for
+  getting news updates, RSS feed subscriptions, blog or site updates, news
+  source aggregation, and browsing news by category. The script ships with
+  local caching (default 4 hours, adjustable) and by default only shows news
+  from the last 24 hours, with filtering by category and time window.
 license: MIT
-version: "1.1.0"
+version: "1.3.0"
 ---
 
 # RSS News
 
-Fetches news from RSS sources by category as defined in `news-source.json`, deduplicates via cache, and outputs compact summaries by default. Pass `--yaml` for the full structured payload.
+Fetches news from RSS sources by category as defined in `news-source.json`, deduplicates via cache, and outputs each article as a title + summary block followed by a total count.
 
 ## Quick Reference
 
@@ -35,6 +33,12 @@ uv run rss-fetch.py -c politics,technology
 # Only news from the last 48 hours (default 24, 0 means no time limit)
 uv run rss-fetch.py -c politics --within-hours 48
 uv run rss-fetch.py -c sports --within-hours 0
+
+# Only refresh the cache, no news output (useful for warming cache)
+uv run rss-fetch.py --fetch-only
+
+# Force a cache refresh without outputting anything
+uv run rss-fetch.py --fetch-only --refetch-interval-hours 0
 ```
 
 ---
@@ -46,7 +50,7 @@ uv run rss-fetch.py -c sports --within-hours 0
 | `-c, --category`             | All categories | Categories to output, comma-separated, e.g. `-c politics,technology`. If omitted, outputs all available categories. |
 | `--refetch-interval-hours`   | `4`          | Cache freshness threshold. Skips fetching when the cache exists and is younger than this many hours. |
 | `--within-hours`             | `24`         | Only show news published within this many hours. `0` means no limit, showing all cached news.        |
-| `--yaml`                     | Off          | Output full structured YAML (`title`/`link`/`summary`/`published`/`source`). Default is compact summary-only output. |
+| `--fetch-only`               | Off          | Only refresh the cache; do not output any news. Prints one status line to stdout on completion (`news fetched successfully` or `cache is fresh`). Respects `--refetch-interval-hours`; combine with `--refetch-interval-hours 0` to force a refresh. |
 | `--debug`                    | Off          | Enables DEBUG-level logging, outputting fetch and cache details.                                     |
 | `-h, --help`                 | —            | Show help.                                                                                           |
 | `--version`                  | —            | Show version.                                                                                        |
@@ -60,6 +64,7 @@ uv run rss-fetch.py -c sports --within-hours 0
 | Use `-c` to select categories, omit for all | Category names are listed in the table below; comma-separate for multiple selections.                                      |
 | Cache is managed automatically             | `cache/rss_output.json` skips fetching if younger than `--refetch-interval-hours`; auto-refreshes fully when stale or missing. |
 | Use `--within-hours` to control time range | Defaults to showing only news from the last 24 hours; pass `0` to show all.                                                |
+| Use `--fetch-only` to warm the cache       | Refreshes the cache without producing any news output; respects `--refetch-interval-hours` for freshness gating.            |
 | Do not manually look for a refresh command | Refresh logic is built into the output flow; pass `--refetch-interval-hours 0` to force a refresh.                         |
 | The script only returns RSS summaries      | When full article text is needed, fetch the `link` with a web tool.                                                        |
 | Fetch failures do not halt execution       | A single source failure is logged and skipped; other sources return normally.                                              |
@@ -87,50 +92,27 @@ Categories are defined by the script's `Category` enum and map to category names
 
 ## Output Format
 
-By default the script outputs **compact summary-only text**: one article summary per block, blocks separated by a single blank line. Empty summaries are skipped. This minimizes token usage when feeding the result to an AI at scale.
+The script outputs each article as a **title + summary block**: the article title on the first line and the RSS summary text on the next line, blocks separated by a single blank line. A trailing `total n news` line reports how many articles were shown. Empty/whitespace-only summaries are skipped.
 
 ```
-First article's RSS summary text appears here as a single block.
+First article headline
+First article's RSS summary text appears here.
 
-Second article's RSS summary text appears here as another block.
+Second article headline
+Second article's RSS summary text appears here.
 
+Third article headline
 Third article's RSS summary text.
+
+total 3 news
 ```
 
-Pass `--yaml` to get the full structured payload (top level is `last_sync` / `article_count` / `categories`):
-
-```yaml
-last_sync: "2026-07-02T10:00:00+08:00"
-article_count: 2
-categories:
-  Politics:
-    - title: "Example headline"
-      link: "https://example.com/article"
-      summary: "RSS summary text"
-      published: "2026-07-02T07:30:00+00:00"
-      source: "Politico"
-  Technology:
-    - title: "Another headline"
-      link: "https://example.com/tech-article"
-      summary: "RSS summary text"
-      published: "2026-07-02T06:00:00+00:00"
-      source: "The Verge"
-```
-
-Default (summary-only) field:
+Field descriptions:
 
 | Field    | Meaning                                                                               |
 | -------- | ------------------------------------------------------------------------------------- |
-| `summary`| The RSS summary/description text of each article, HTML-stripped, one per blank-line-separated block |
-
-`--yaml` field descriptions:
-
-| Field                                                 | Meaning                                                                  |
-| ----------------------------------------------------- | ------------------------------------------------------------------------ |
-| `last_sync`                                           | Time of the most recent cache fetch (Asia/Shanghai timezone)             |
-| `article_count`                                       | Total number of news items in this output (after category/time filtering) |
-| `categories`                                          | News lists grouped by category name; each category contains an array of articles |
-| `title` / `link` / `summary` / `published` / `source` | Per-article title, link, summary, publish time (ISO 8601), and source display name |
+| `title`  | The article title, printed as the first line of each block                            |
+| `summary`| The RSS summary/description text of each article, HTML-stripped, on the line after the title |
 
 ---
 

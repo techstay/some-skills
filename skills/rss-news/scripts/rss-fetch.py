@@ -220,51 +220,6 @@ async def fetch_all_news():
     logger.debug("Saved cache to {}", OUTPUT_PATH)
 
 
-def to_yaml_like(obj, indent=0) -> str:
-    """Render dict/list/str/int as YAML-like text."""
-    prefix = " " * indent
-    if isinstance(obj, dict):
-        lines = []
-        for key, value in obj.items():
-            if value is None:
-                continue
-            if isinstance(value, (dict, list)):
-                lines.append(f"{prefix}{key}:")
-                nested = to_yaml_like(value, indent + 2)
-                if nested:
-                    lines.append(nested)
-            else:
-                lines.append(f"{prefix}{key}: {to_yaml_like(value, 0)}")
-        return "\n".join(lines)
-    elif isinstance(obj, list):
-        lines = []
-        for item in obj:
-            if isinstance(item, dict):
-                rendered = to_yaml_like(item, indent + 2)
-                if rendered:
-                    # Render dict inline: first key goes after "- ", rest stay indented
-                    first_line, *rest_lines = rendered.split("\n")
-                    marker = " " * (indent + 2)
-                    if first_line.startswith(marker):
-                        first_line = first_line[len(marker) :]
-                    lines.append(f"{prefix}- {first_line}")
-                    lines.extend(rest_lines)
-                else:
-                    lines.append(f"{prefix}- ")
-            else:
-                lines.append(f"{prefix}- {to_yaml_like(item, 0)}")
-        return "\n".join(lines)
-    elif isinstance(obj, bool):
-        return "true" if obj else "false"
-    elif isinstance(obj, int):
-        return str(obj)
-    elif isinstance(obj, str):
-        return json.dumps(obj, ensure_ascii=False)
-    elif obj is None:
-        return ""
-    return str(obj)
-
-
 def should_refetch(refetch_interval_hours: int) -> bool:
     """Return True if the cache is missing or older than the refetch interval."""
     if not OUTPUT_PATH.exists():
@@ -323,11 +278,11 @@ def build_display(enabled_categories: set[str], within_hours: int) -> dict:
     }
 
 
-def render_summaries(display: dict) -> str:
-    """Render only article summaries, one per block, separated by blank lines.
+def render_news(display: dict) -> str:
+    """Render each article as its title on one line and summary on the next,
+    blocks separated by a blank line, followed by a trailing total count line.
 
-    Empty/whitespace-only summaries are skipped to avoid blank-line noise.
-    This compact format is token-efficient for large-scale AI consumption.
+    Empty/whitespace-only summaries are skipped to avoid empty blocks.
     """
     blocks: list[str] = []
     for articles in display["categories"].values():
@@ -335,13 +290,15 @@ def render_summaries(display: dict) -> str:
             summary = (article.get("summary") or "").strip()
             if not summary:
                 continue
-            blocks.append(summary)
-    return "\n\n".join(blocks)
+            title = (article.get("title") or "").strip()
+            blocks.append(f"{title}\n{summary}" if title else summary)
+    body = "\n\n".join(blocks)
+    return f"{body}\n\ntotal {len(blocks)} news"
 
 
 app = App(
     name="rss-fetch",
-    help="Fetch news from RSS feeds and output compact summaries (blank-line separated).",
+    help="Fetch news from RSS feeds and output title + summary blocks with a total count.",
     help_flags=["--help", "-h"],
     version="1.0.0",
     default_parameter=Parameter(negative=(), show_default=False),
@@ -383,13 +340,13 @@ async def main(
             help="Enable debug-level logging.",
         ),
     ] = False,
-    yaml: Annotated[
+    fetch_only: Annotated[
         bool,
         Parameter(
-            name=["--yaml"],
+            name=["--fetch-only"],
             help=(
-                "Output full structured YAML (title/link/summary/published/source). "
-                "Default is compact summary-only output for AI consumption."
+                "Only refresh the cache; do not output any news. "
+                "Useful for warming the cache without producing output."
             ),
         ),
     ] = False,
@@ -407,14 +364,20 @@ async def main(
         logger.warning("No categories enabled, nothing to fetch.")
         return
 
+    refetched = False
     if should_refetch(refetch_interval_hours):
         await fetch_all_news()
+        refetched = True
+
+    if fetch_only:
+        if refetched:
+            print("Fetch-only: news fetched successfully, cache refreshed.")
+        else:
+            print("Fetch-only: cache is fresh, no fetch needed.")
+        return
 
     result = build_display(enabled_categories, within_hours)
-    if yaml:
-        print(to_yaml_like(result))
-    else:
-        print(render_summaries(result))
+    print(render_news(result))
 
 
 if __name__ == "__main__":
