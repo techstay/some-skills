@@ -323,9 +323,25 @@ def build_display(enabled_categories: set[str], within_hours: int) -> dict:
     }
 
 
+def render_summaries(display: dict) -> str:
+    """Render only article summaries, one per block, separated by blank lines.
+
+    Empty/whitespace-only summaries are skipped to avoid blank-line noise.
+    This compact format is token-efficient for large-scale AI consumption.
+    """
+    blocks: list[str] = []
+    for articles in display["categories"].values():
+        for article in articles:
+            summary = (article.get("summary") or "").strip()
+            if not summary:
+                continue
+            blocks.append(summary)
+    return "\n\n".join(blocks)
+
+
 app = App(
     name="rss-fetch",
-    help="Fetch news from RSS feeds and display them in a YAML-like format.",
+    help="Fetch news from RSS feeds and output compact summaries (blank-line separated).",
     help_flags=["--help", "-h"],
     version="1.0.0",
     default_parameter=Parameter(negative=(), show_default=False),
@@ -367,6 +383,16 @@ async def main(
             help="Enable debug-level logging.",
         ),
     ] = False,
+    yaml: Annotated[
+        bool,
+        Parameter(
+            name=["--yaml"],
+            help=(
+                "Output full structured YAML (title/link/summary/published/source). "
+                "Default is compact summary-only output for AI consumption."
+            ),
+        ),
+    ] = False,
 ):
     if debug:
         logger.remove()
@@ -385,7 +411,10 @@ async def main(
         await fetch_all_news()
 
     result = build_display(enabled_categories, within_hours)
-    print(to_yaml_like(result))
+    if yaml:
+        print(to_yaml_like(result))
+    else:
+        print(render_summaries(result))
 
 
 if __name__ == "__main__":

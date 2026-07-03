@@ -2,18 +2,20 @@
 name: rss-news
 description: >
   RSS news aggregation skill. Fetches news by category from configured RSS
-  sources and outputs in YAML format. Suitable for getting news updates, RSS
-  feed subscriptions, blog or site updates, news source aggregation, and
-  browsing news by category. The script ships with local caching (default 4
-  hours, adjustable) and by default only shows news from the last 24 hours,
-  with filtering by category and time window.
+  sources and outputs compact summaries. Suitable for getting news updates,
+  RSS feed subscriptions, blog or site updates, news source aggregation,
+  and browsing news by category. The script ships with local caching
+  (default 4 hours, adjustable) and by default only shows news from the
+  last 24 hours, with filtering by category and time window. Default output
+  is token-efficient (summary only, blank-line separated) for large-scale AI
+  consumption; pass --yaml for the full structured payload.
 license: MIT
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # RSS News
 
-Fetches news from RSS sources by category as defined in `news-source.json`, deduplicates via cache, and outputs in YAML format.
+Fetches news from RSS sources by category as defined in `news-source.json`, deduplicates via cache, and outputs compact summaries by default. Pass `--yaml` for the full structured payload.
 
 ## Quick Reference
 
@@ -44,6 +46,7 @@ uv run rss-fetch.py -c sports --within-hours 0
 | `-c, --category`             | All categories | Categories to output, comma-separated, e.g. `-c politics,technology`. If omitted, outputs all available categories. |
 | `--refetch-interval-hours`   | `4`          | Cache freshness threshold. Skips fetching when the cache exists and is younger than this many hours. |
 | `--within-hours`             | `24`         | Only show news published within this many hours. `0` means no limit, showing all cached news.        |
+| `--yaml`                     | Off          | Output full structured YAML (`title`/`link`/`summary`/`published`/`source`). Default is compact summary-only output. |
 | `--debug`                    | Off          | Enables DEBUG-level logging, outputting fetch and cache details.                                     |
 | `-h, --help`                 | —            | Show help.                                                                                           |
 | `--version`                  | —            | Show version.                                                                                        |
@@ -84,7 +87,17 @@ Categories are defined by the script's `Category` enum and map to category names
 
 ## Output Format
 
-The script outputs YAML-style text (top level is `last_sync` / `article_count` / `categories`):
+By default the script outputs **compact summary-only text**: one article summary per block, blocks separated by a single blank line. Empty summaries are skipped. This minimizes token usage when feeding the result to an AI at scale.
+
+```
+First article's RSS summary text appears here as a single block.
+
+Second article's RSS summary text appears here as another block.
+
+Third article's RSS summary text.
+```
+
+Pass `--yaml` to get the full structured payload (top level is `last_sync` / `article_count` / `categories`):
 
 ```yaml
 last_sync: "2026-07-02T10:00:00+08:00"
@@ -104,7 +117,13 @@ categories:
       source: "The Verge"
 ```
 
-Field descriptions:
+Default (summary-only) field:
+
+| Field    | Meaning                                                                               |
+| -------- | ------------------------------------------------------------------------------------- |
+| `summary`| The RSS summary/description text of each article, HTML-stripped, one per blank-line-separated block |
+
+`--yaml` field descriptions:
 
 | Field                                                 | Meaning                                                                  |
 | ----------------------------------------------------- | ------------------------------------------------------------------------ |
