@@ -25,7 +25,6 @@ Rules:
 **The following skills are currently INCOMPLETE and should NOT be committed:**
 
 - `activitywatch` - ActivityWatch time tracking skill (incomplete)
-- `multi-agent-orchestration` - Multi-agent AI coordination skill (incomplete)
 
 **DO NOT commit these skills until they are fully completed and reviewed.**
 

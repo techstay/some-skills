@@ -7,82 +7,137 @@
   <img src="https://img.shields.io/badge/Made%20with-%E2%9D%A4-red?style=flat-square" alt="Made with love" />
 </p>
 
-一些可能有用的技能（Skills），用于扩展 AI 大模型的能力。
+A collection of useful skills for extending AI coding agent capabilities. Each skill packages domain knowledge, reference materials, and executable scripts into a self-contained unit that agents can load on demand.
 
 <!--Quote starts-->
 <details>
-<summary><b>💡 每日灵感</b></summary>
+<summary><b>💡 Daily Inspiration</b></summary>
 
 <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=light" alt="Random Quote" />
 
 </details>
 <!--Quote ends-->
 
-## 🚀 安装技能
+## 🚀 Installation
 
-本仓库的技能可以通过 `npx skills` CLI 工具安装到各种 AI 编码代理中（支持 OpenCode、Claude Code、Cursor、Codex 等 40+ 代理）。
+Skills in this repository can be installed to various AI coding agents (OpenCode, Claude Code, Cursor, Codex, and 40+ more) via the `npx skills` CLI tool.
 
-### 快速安装
+### Quick Start
 
 ```bash
-# 安装所有技能到项目
+# Install all skills to project
 npx skills add techstay/some-skills
 
-# 安装到全局
+# Install globally
 npx skills add techstay/some-skills -g
 
-# 安装指定技能
-npx skills add techstay/some-skills --skill obsidian-tasks --skill web-search
+# Install specific skills
+npx skills add techstay/some-skills --skill rss-news --skill search-and-extract
 
-# 安装到指定代理
+# Install for specific agents
 npx skills add techstay/some-skills -a opencode -a claude-code
 
-# 查看可用技能（不安装）
+# List available skills without installing
 npx skills add techstay/some-skills --list
 ```
 
-### 更多命令
+### More Commands
 
-| 命令 | 说明 |
-|------|------|
-| `npx skills list` | 列出已安装的技能 |
-| `npx skills find [query]` | 搜索技能 |
-| `npx skills remove [skills]` | 移除已安装的技能 |
-| `npx skills check` | 检查技能更新 |
-| `npx skills update` | 更新所有已安装技能 |
+| Command | Description |
+|---------|-------------|
+| `npx skills list` | List installed skills |
+| `npx skills find [query]` | Search for skills |
+| `npx skills remove [skills]` | Remove installed skills |
+| `npx skills check` | Check for skill updates |
+| `npx skills update` | Update all installed skills |
 
-> 了解更多：[vercel-labs/skills](https://github.com/vercel-labs/skills)
+> Learn more: [vercel-labs/skills](https://github.com/vercel-labs/skills)
 
-## 📁 技能列表
+## 📁 Skill Catalog
 
-### ✅ obsidian-tasks
+### 🔍 search-and-extract
 
-Obsidian Tasks 插件技能 —— 在 Obsidian vault 的 Markdown 文件中创建、编辑和管理任务。
+Web search, browsing, and citation workflow using multiple search backends (Tavily, Exa, Ollama) to answer time-sensitive or niche questions. Use for fact verification, getting citations/quotes, finding current information (news, prices, policies, schedules), or whenever uncertainty is high and web verification is needed.
 
-**功能覆盖：**
+**Features:**
 
-- 创建和编辑任务（含日期、优先级、标签、重复规则等元数据）
-- 编写任务查询代码块（`tasks` 代码块）
-- 任务状态管理（内置状态和自定义状态）
-- 任务依赖关系（id / dependsOn）
-- 高级查询（脚本函数、正则过滤、预设查询）
+- Three search backends: Tavily AI search, Exa neural search, and Ollama (local LLM) search
+- Configurable result limit (`--max-results`, default 5)
+- YAML-formatted output for easy parsing
+- API keys configured via environment variables or `.env` file
 
-### 🔍 web-search
+### 🗞️ rss-news
 
-网络搜索技能 —— 支持多后端（Tavily、Exa、Ollama）的网络检索，返回 YAML 格式结果。
+RSS news aggregation skill that fetches news by category from configured RSS sources and outputs structured YAML results. Features local caching, deduplication, and time-window filtering.
 
-### 📊 obsidian-kanban
+**Features:**
 
-Obsidian Kanban 插件技能 —— 在 Obsidian vault 中创建和管理基于 Markdown 的可视化看板。
+- 10 news categories: China, International, Technology, Finance, Politics, Sports, Science, Health, Entertainment, Culture
+- Configurable time window (`--within-hours`, default 24h)
+- Smart 4-hour caching with HTTP conditional requests (ETag/Last-Modified)
+- Fault-tolerant fetching (individual source failures don't halt execution)
+- Pre-configured sources including major Chinese and international outlets
+- Debug mode for troubleshooting
 
-**功能覆盖：**
+### 📂 jellyfin-renaming
 
-- 创建和编辑看板（列、卡片、日期、标签、关联笔记）
-- 完整的 Board Settings 配置参考
-- 归档系统与列独立设置
-- 与 Tasks 插件配合（含重复任务限制说明）
-- 常见配置模板（每日看板、项目跟踪、知识管理等）
-- FAQ 与故障排查指南
+Guided, manually-reviewed workflow for renaming movies, TV shows, anime, specials, external subtitles, external audio tracks, and their containing folders to match Jellyfin naming conventions. Every rename is reviewed before execution — nothing is applied blindly.
+
+**Features:**
+
+- Two modes: dry-run (suggest names only) and apply (rename on disk after review)
+- Absolute no-delete safety: files are moved to a `Rubbish/` subfolder instead of being removed
+- Deepest-path-first rename order with case-insensitive filesystem handling
+- Automatic append-only `rename-log.md` recording every rename
+- Comprehensive Jellyfin naming rules covering: movies (with TMDB/IMDb IDs), multi-version files, 3D movies, multi-part movies, TV seasons/episodes, multi-episode files, specials (Season 00), anime extras (NCOP/NCED/OVA/OAD/SP), external subtitles/audio with language/flag tags, extras/trailers, and local artwork
+- Built-in TMDB metadata lookup helper to confirm titles, years, and IDs
+- Quality checklist for verifying rename correctness
+
+### 🔔 push-and-notify
+
+Send push notifications to multiple messaging endpoints from a single unified CLI. Supports Telegram, ntfy, and WxPusher (WeChat push) as independent subcommands — credentials are only needed for the services you use.
+
+**Features:**
+
+- Three notification services in one tool:
+  - **Telegram** — via Telegram Bot API
+  - **ntfy** — via ntfy topics (supports custom servers and auth tokens)
+  - **WxPusher** — WeChat push notifications (supports multiple recipients)
+- Multi-line content normalization (handles Windows/Mac/Unix line endings and escaped newlines)
+- Uniform CLI interface: `uv run notify.py <service> <title> <content>`
+- YAML-formatted success/failure status output
+- Each service's credentials are independently configured via `.env`
+
+### 📓 marimo
+
+Create and manage reactive Python notebooks in Marimo — an open-source reactive notebook that reimagines Jupyter as reproducible, interactive, shareable Python programs.
+
+**Features:**
+
+- Covers notebook creation, UI input components (`mo.ui.*`), SQL cells, and app deployment
+- DAG-based reactive execution model reference
+- Common pitfalls guide with ❌/✅ comparisons (mutation tracking, global variable uniqueness)
+- Quick reference table for daily tasks
+- 5 reference documents covering:
+  - Core concepts (reactive execution, DAG, static analysis)
+  - UI input components
+  - SQL and data processing
+  - App deployment and layout options
+  - CLI commands reference
+
+### ⏱️ activitywatch
+
+Retrieve and analyze local ActivityWatch time tracking data. Queries a running ActivityWatch server and returns formatted application usage duration and percentages for a specific day or date range. Automatically filters out AFK periods and uses local timezone.
+
+**Features:**
+
+- `daily` subcommand — stats for a single day (`today`, `yesterday`, or `YYYY-MM-DD`)
+- `range` subcommand — aggregated stats across a date range
+- Configurable top-N results (`--top`, default 10)
+- Custom server URL support (`--url`, default `http://localhost:5600`)
+- Plain text output sorted by duration descending
+
+> **Note:** This skill is currently in development.
 
 ## ⭐ Star History
 
