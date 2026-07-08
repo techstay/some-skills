@@ -1,0 +1,3 @@
+# Ignore build/cache noise for AI tools, but keep deepwork session state readable
+.slim/deepwork/
+!.slim/deepwork/**

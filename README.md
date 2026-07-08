@@ -57,14 +57,16 @@ npx skills add techstay/some-skills --list
 
 ### 🔍 search-and-extract
 
-Web search, browsing, and citation workflow using multiple search backends (Tavily, Exa, Ollama) to answer time-sensitive or niche questions. Use for fact verification, getting citations/quotes, finding current information (news, prices, policies, schedules), or whenever uncertainty is high and web verification is needed.
+Web search and URL content extraction CLI spanning multiple backends to answer time-sensitive or niche questions. Use for fact verification, getting citations/quotes, finding current information (news, prices, policies, schedules), fetching article text, or whenever uncertainty is high and web verification is needed.
 
 **Features:**
 
-- Three search backends: Tavily AI search, Exa neural search, and Ollama (local LLM) search
-- Configurable result limit (`--max-results`, default 5)
-- YAML-formatted output for easy parsing
-- API keys configured via environment variables or `.env` file
+- Seven backends: Tavily, Exa, Ollama Cloud, Jina AI, Parallel Web Systems, Firecrawl, and local SearXNG
+- Two commands: `search` (web search) and `extract` (fetch a single URL)
+- Auto-selects first available backend; override with `--<service>` flag
+- Configurable result limit (`--max-results`, default 10)
+- Plain text output (`\n---\n` separated) optimized for LLM consumption
+- API keys configured via environment variables
 
 ### 🗞️ rss-news
 
@@ -77,6 +79,7 @@ RSS news aggregation skill that fetches news by category from configured RSS sou
 - Smart 4-hour caching with HTTP conditional requests (ETag/Last-Modified)
 - Fault-tolerant fetching (individual source failures don't halt execution)
 - Pre-configured sources including major Chinese and international outlets
+- `--fetch-only` mode for cache warming without output
 - Debug mode for troubleshooting
 
 ### 📂 jellyfin-renaming
@@ -105,7 +108,7 @@ Send push notifications to multiple messaging endpoints from a single unified CL
   - **WxPusher** — WeChat push notifications (supports multiple recipients)
 - Multi-line content normalization (handles Windows/Mac/Unix line endings and escaped newlines)
 - Uniform CLI interface: `uv run notify.py <service> <title> <content>`
-- YAML-formatted success/failure status output
+- YAML-formatted success/failure status output; errors go to stderr via loguru
 - Each service's credentials are independently configured via `.env`
 
 ### 📓 marimo
@@ -127,17 +130,17 @@ Create and manage reactive Python notebooks in Marimo — an open-source reactiv
 
 ### ⏱️ activitywatch
 
-Retrieve and analyze local ActivityWatch time tracking data. Queries a running ActivityWatch server and returns formatted application usage duration and percentages for a specific day or date range. Automatically filters out AFK periods and uses local timezone.
+Retrieve and analyze local ActivityWatch time tracking data, plus manage category configuration. Queries a running ActivityWatch server and returns formatted application usage duration and percentages for daily, weekly, or monthly periods. Automatically filters out AFK periods and uses local timezone.
 
 **Features:**
 
-- `daily` subcommand — stats for a single day (`today`, `yesterday`, or `YYYY-MM-DD`)
-- `range` subcommand — aggregated stats across a date range
+- `activity` command (`a` alias) — daily, weekly, or monthly reports with category breakdown
+- Pin reports to a specific date (`YYYY-MM-DD`) or month (`YYYY-MM`)
 - Configurable top-N results (`--top`, default 10)
+- Per-app activity timeline showing focus sessions and longest session
 - Custom server URL support (`--url`, default `http://localhost:5600`)
-- Plain text output sorted by duration descending
-
-> **Note:** This skill is currently in development.
+- `category` command (`c` alias) — get/set ActivityWatch category rules with automatic backup
+- `category unclassified` subcommand to find apps/titles not matched by any rule
 
 ## ⭐ Star History
 

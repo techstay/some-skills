@@ -12,6 +12,7 @@ env/
 # IDE
 .vscode/
 .idea/
+.sisyphus/
 *.swp
 *.swo
 
@@ -30,5 +31,8 @@ desktop.ini
 
 # workbuddy
 .workbuddy/
+
+# deepwork session state
+.slim/deepwork/
 
 cache/
