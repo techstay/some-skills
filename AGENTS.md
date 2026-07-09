@@ -29,6 +29,17 @@ Rules:
 3. Follow the `❌`/`✅` comparison table pattern for error guidance
 4. Verify frontmatter YAML is valid after edits
 
+## Markdown Files
+
+- Write all Markdown files in English (see the rule at the top of this file).
+- After editing a Markdown file, format it with Prettier before considering the change done:
+
+  ```sh
+  bunx prettier --write path/to/file.md
+  ```
+
+- Project-wide Markdown lint rules are defined in `.markdownlint.json` (e.g. MD033 inline-HTML is allowed).
+
 ## Windows-Specific Notes
 
 - Use PowerShell (pwsh) for shell commands
