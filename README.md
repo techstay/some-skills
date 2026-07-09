@@ -142,6 +142,22 @@ Retrieve and analyze local ActivityWatch time tracking data, plus manage categor
 - `category` command (`c` alias) — get/set ActivityWatch category rules with automatic backup
 - `category unclassified` subcommand to find apps/titles not matched by any rule
 
+### 🎵 lyrics-fetcher
+
+Fetch song lyrics from Genius (https://genius.com) for a single song, an artist's catalog, or a full album, and print them as clean title + lyrics blocks. Wraps the `lyricsgenius` library and ships with section-header stripping, term exclusion, txt/json output, and optional file saving.
+
+**Features:**
+
+- Three subcommands: `song` (single track), `artist` (full catalog, multi-song), and `album` (full album, multi-song)
+- Optional artist hint (`-a/--artist`) to avoid matching the wrong song with a shared title
+- Section headers like `[Chorus]`/`[Verse]` stripped by default; keep them with `--keep-headers`
+- Term exclusion (`--excluded-terms`) to skip remixes/live versions
+- `txt` (default) or `json` output; `json` includes `title`, `artist`, `lyrics`, and `url`
+- `--max-songs` cap for artists (default 10, `0` = all) with `title`/`popularity` sort and optional featured tracks
+- `--save` writes results to the skill's `output/` directory with unsafe characters sanitized
+- Non-song tracks (track listings, etc.) skipped automatically via `skip_non_songs`
+- Requires a Genius `access_token` via `scripts/.env` (never committed)
+
 ## ⭐ Star History
 
 <a href="https://www.star-history.com/?repos=techstay%2Fsome-skills&type=date&legend=top-left">
